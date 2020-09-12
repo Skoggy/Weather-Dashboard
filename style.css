@@ -2,12 +2,20 @@
     font: helvetica;
 }
 
-.search  {
-    padding: 20px;
-    background-color: grey;
+.container  {
+    display: inline-block;
+    
+    flex-direction: row;
     
 }
 
+.search  {
+    padding: 20px;
+    background-color: grey;
+    flex: 2;
+    order: 1;
+    
+}
 
 h1  {
     width: 100%;
@@ -16,12 +24,14 @@ h1  {
     color:  white;
     text-align: center;
     margin-top: 100px;
-    
     border-radius: 3px;
     
 }
 
 .current {
     background-color: white;
+    flex: 5;
+    order: 2;
+    padding-left: 30px;
   }
   

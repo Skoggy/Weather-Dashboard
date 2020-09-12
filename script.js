@@ -1,15 +1,36 @@
 
 
-var apiKey = "8c321cc1716884b0a6eec6410a70fa25"
-var q = "melbourne"
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + q + "&APPID=" + apiKey
 
 
-$(".submit").on("click", function(event) {
-    event.preventDefault();
-   
+
+  function clear() {
+    $(".current").empty();
+  }
+  
+
+
+//var cityName = $(".city-input").val().trim();
+
+//var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + apiKey
+
+
+$(".submit").on("click", function() {
+
+  clear();
+  
+  var queryParams = { "APPID": "8c321cc1716884b0a6eec6410a70fa25" }
+
+  queryParams.q = $(".city-input").val().trim();
+
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?"
+
+  queryURL = queryURL + $.param(queryParams);
+  console.log(queryURL + $.param(queryParams))
+
+  //var apiKey = "8c321cc1716884b0a6eec6410a70fa25"
+  //cityName = $(".city-input").val().trim()
+  //var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + apiKey
     
-
 $.ajax({
     url: queryURL,
     method: "GET"
@@ -25,6 +46,7 @@ var currentWeather = function(coord) {
   console.log
 var cityName = $("<h2>").text(coord.name);
 var celsTemp =(coord.main.feels_like) - 273.15
+var celsTemp = celsTemp.toFixed(2);
 var currentTemp = $("<p>").text(celsTemp)
 var humidity = $("<p>").text(coord.main.humidity)
 var windSpeed = $("<p>").text(coord.wind.speed)
