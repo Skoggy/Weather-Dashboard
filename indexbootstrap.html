@@ -11,9 +11,11 @@
 
 <body>
     <div class="jumbotron jumbotron-fluid">
-        <div class="container-fluid">
+      <div class="container-fluid">
+        <div class = "col-12 text-center">
             <h1 class="display-4">Weather Dashboard</h1>
         </div>
+      </div>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-around">
@@ -34,10 +36,10 @@
                         <p>Temperature: <span id="temperature"></span></p>
                         <p>Humidity: <span id="humidity"></span></p>
                         <p>Wind Speed: <span id="windspeed"></span></p>
-                        <p>UV Index: </p>
-                    </div>
+                        <p>UV Index: <p><span id = "uv-index" class = "badge"></span></p>
+                    
                 </div>
-
+                
                 <h3 class="mt-5 mb-5">Five Day Forecast: </h3>
 
                 <div class="card bg-primary">
@@ -80,7 +82,7 @@
                         <p class="weather-humidity"></p>
                     </div>
                 </div>
-
+</div>
             </div>
         </div>
     </div>
