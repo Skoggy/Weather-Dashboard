@@ -1,17 +1,17 @@
 $(document).ready(function () {
+  const fiveDayContainer = document.getElementById('day-container')
 
   let weather = ""
   let city = ""
   let current_date = moment().format("L");
 
-
-
   let search_history = JSON.parse(localStorage.getItem("cities")) === null ? [] : JSON.parse(localStorage.getItem("cities"));
-
-  
 
   displayHistory();
 
+  function showFiveDay() {
+    fiveDayContainer.classList.remove('hide')
+  }
   function currentWeather() {
 
     if ($(this).attr("id") === "submit-city") {
@@ -21,7 +21,7 @@ $(document).ready(function () {
     }
     APPID = "8c321cc1716884b0a6eec6410a70fa25"
     weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APPID;
-   
+
     console.log(search_history.indexOf(city))
     console.log(this)
     console.log(city)
@@ -33,7 +33,7 @@ $(document).ready(function () {
     localStorage.setItem("cities", JSON.stringify(search_history));
 
     APPID = "8c321cc1716884b0a6eec6410a70fa25"
-    
+
     weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APPID;
 
     $.getJSON(weather, function (json) {
@@ -46,7 +46,7 @@ $(document).ready(function () {
       $("#temperature").text(temp.toFixed(2) + "°C");
       $("#humidity").text(json.main.humidity + "%");
       $("#windspeed").text(windspeed.toFixed(2) + " " + "kph");
-
+      console.log(json)
       let lat = json.coord.lat
       let lon = json.coord.lon
 
@@ -69,7 +69,6 @@ $(document).ready(function () {
         } else if (response.value > 7) {
           $("#uv-index").attr("class", "badge-danger")
         }
-
       })
     })
   }
@@ -88,7 +87,6 @@ $(document).ready(function () {
       for (let i = 0; i < response.list.length; i++) {
 
         let date_and_time = response.list[i].dt_txt;
-        //console.log(date_and_time)
         let date = date_and_time.split(" ")[0];
         let time = date_and_time.split(" ")[1];
 
@@ -101,13 +99,11 @@ $(document).ready(function () {
           $("#day-" + dayCount).children(".weather-icon").attr("src", "https://api.openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
           $("#day-" + dayCount).children(".weather-temp").text("Temp: " + (response.list[i].main.temp - 273.15).toFixed(2) + "°C");
           $("#day-" + dayCount).children(".weather-humidity").text("Humidity: " + response.list[i].main.humidity + "%");
+          showFiveDay();
           dayCount++;
-
         }
       }
-
     })
-
   }
 
   function displayHistory() {
@@ -127,8 +123,15 @@ $(document).ready(function () {
     $(".btn").on("click", fiveDayForecast);
   }
 
-  $("#submit-city").click(displayHistory);
 
+  function historyClear() {
+    $(".city-list").empty();
+    search_history = [];
+    localStorage.setItem("cities", JSON.stringify(search_history));
+  }
+
+  $("#submit-city").click(displayHistory);
+  $("#history-clear").click(historyClear);
 })
 
 

@@ -1,43 +1,8 @@
-*  {
-    font: helvetica;
+.hide {
+    visibility: hidden;
 }
 
-.container  {
-    display: flex;
-    
-    flex-direction: row;
-    
+.bg-primary {
+    padding: 0.5rem;
+    margin : 0.5rem;
 }
-
-.search  {
-    padding: 20px;
-    background-color: grey;
-    flex: 2;
-    order: 1;
-    width: -moz-min-content;
-    width: min-content;
-    border: 2px solid black;
-    
-    
-}
-
-h1  {
-    width: 100%;
-    height: 50px;
-    background-color: #282828;
-    color:  white;
-    text-align: center;
-    margin-top: 100px;
-    border-radius: 3px;
-    
-}
-
-.current {
-    background-color: white;
-    flex: 5;
-    order: 2;
-    padding-left: 30px;
-    width: -moz-max-content;
-    width: max-content;
-  }
-  

@@ -2,46 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <header>
-        <h1><i class="fas fa-cloud"></i>Weather Dashboard<i class="fas fa-cloud"></i></h1>
-    </header>
-    <div class="container">
-        <div class="search">
-            <h3>Search for a city: </h3>
-            <input type='text' placeholder="Enter A City" class ="city-input"><button class="submit" id = "submit"><i class="fas fa-search-plus"></i></button>
-            <div class="history-box">
-                <ul class = "city-list">
-                    <button class = "button"><li></li></button>
-                </ul>
-                </div>
-            </div>       
-                <div class="current"> 
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <div class="col-12 text-center">
+                <h1 class="display-4">Weather Dashboard</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="col-3 card bg-light mt-2">
+                <div class="form-inline mt-3">
+                    <input class="ml-5 city-input" id="city" type="text" placeholder="Search">
+                    <button class="btn" id="submit-city" type="submit"><i class="fas fa-search-plus"></i></button>
                 </div>
 
-                <div class = "forecast-container">
-                    <div class="forecast-header">
-                        <div class ="forecast-row">
-                            
-                        </div>
+                <ul class="mr-5 mt-2 city-list"></ul>
+                <button id="history-clear">Clear History</button>
+            </div>
 
+            <div class="col-7 card bg-light mt-4">
+                <div class="row current">
+                    <div class="col-7">
+                        <h1><span class="city-name" id="current-city"></span></h1>
+                        <img id="weather-img" src="" />
+                        <p>Temperature: <span id="temperature"></span></p>
+                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>Wind Speed: <span id="windspeed"></span></p>
+                        <p>UV Index: <span id="uv-index" class="badge"></span></p>
                     </div>
                 </div>
-                
-            
+                <h3 class="mt-5 mb-5">Five Day Forecast:</h3>
+                <div class="card bg-light mt-2 hide" id="day-container">
+
+                    <div class="row">
+
+                        <div class="card bg-primary">
+                            <div id="day-1" class="card-body p-2">
+                                <h6 class="card-date"></h6>
+                                <img class="weather-icon" />
+                                <p class="weather-temp"></p>
+                                <p class="weather-humidity"></p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div id="day-2" class="card-body p-2">
+                                <h6 class="card-date"></h6>
+                                <img class="weather-icon" />
+                                <p class="weather-temp"></p>
+                                <p class="weather-humidity"></p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div id="day-3" class="card-body p-2">
+                                <h6 class="card-date"></h6>
+                                <img class="weather-icon" />
+                                <p class="weather-temp"></p>
+                                <p class="weather-humidity"></p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div id="day-4" class="card-body p-2">
+                                <h6 class="card-date"></h6>
+                                <img class="weather-icon" />
+                                <p class="weather-temp"></p>
+                                <p class="weather-humidity"></p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary">
+                            <div id="day-5" class="card-body p-2">
+                                <h6 class="card-date"></h6>
+                                <img class="weather-icon" />
+                                <p class="weather-temp"></p>
+                                <p class="weather-humidity"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="script.js" type="text/javascript"></script>
 <script src="https://kit.fontawesome.com/f900427f32.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </html>
