@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-![Image of weather dashboard](/assets.2020-09-18.png)
+![Image of weather dashboard](/Assets.2020-09-18.png)
 
 
 
