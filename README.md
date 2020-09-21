@@ -1,6 +1,11 @@
 # Weather-Dashboard
 
+![Image of weather dashboard](/assets.2020-09-18.png)
 
+
+
+## Deployed App
+[Deployed App](https://skoggy.github.io/Weather-Dashboard/)
 
 
 ## Operation
